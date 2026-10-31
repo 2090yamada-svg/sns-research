@@ -1,0 +1,1 @@
+<figure class="fig"><img src="{{ include.src | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy" decoding="async">{% if include.caption or include.credit %}<figcaption>{{ include.caption }}{% if include.credit %}<span class="credit">{{ include.credit }}</span>{% endif %}</figcaption>{% endif %}</figure>

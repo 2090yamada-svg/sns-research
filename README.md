@@ -20,3 +20,14 @@
    ```
 3. 本文をMarkdownで書き、mainブランチにpushすると数分で公開されます。
 4. このREADMEの記事一覧にも1行追加します。
+
+## 画像と埋め込み
+- 記事のひな形: `_drafts/TEMPLATE.md`（front matter と各部品の書き方の例）。見本ページ: https://2090yamada-svg.github.io/sns-research/embed-demo/
+- カード画像: `assets/img/posts/<スラッグ>.jpg`（300KB以下）を置き、front matter に `image:` を書きます。
+- 使える部品（`_includes/`、すべて遅延読み込み・スマホ対応）:
+  - `{% include figure.html src="..." alt="..." caption="..." credit="..." %}` 画像＋キャプション＋クレジット
+  - `{% include youtube.html id="動画ID" title="..." %}` YouTube（youtube-nocookie.com）
+  - `{% include tweet.html url="https://x.com/.../status/..." %}` Xの投稿
+  - `{% include map.html query="場所" %}` Googleマップ
+  - `{% include linkcard.html url="..." title="..." description="..." image="..." %}` リンクカード（外部取得なし）
+- よそのサイトの写真は直接載せず、Canva画像・フリー素材・公式の埋め込みを使います。
