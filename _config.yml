@@ -1,0 +1,7 @@
+title: SNS調査ブログ
+description: X（Twitter）やSNSの利用状況についての調査記事
+lang: ja
+theme: minima
+baseurl: /sns-research
+url: https://2090yamada-svg.github.io
+permalink: /:year/:month/:day/:title/
