@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title and page.layout != 'home' %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 120 }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="{{ '/' | relative_url }}"><span class="dot"></span>{{ site.title }}</a>
+  <nav><a href="{{ '/' | relative_url }}#posts">記事一覧</a><a href="https://github.com/2090yamada-svg/sns-research">GitHub</a></nav>
+</div></header>
+<main>{{ content }}</main>
+<footer class="site-footer"><div class="wrap">
+  <p>{{ site.title }} — {{ site.tagline }}</p>
+  <p class="muted">数字は各出典に基づきます。推測は本文中で明記しています。</p>
+</div></footer>
+</body>
+</html>

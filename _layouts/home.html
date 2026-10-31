@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<section class="hero"><div class="wrap">
+  <p class="eyebrow">SNS RESEARCH NOTES</p>
+  <h1>{{ site.title }}</h1>
+  <p class="tagline">{{ site.tagline }}</p>
+  <p class="lead">{{ site.description }}</p>
+  <a class="btn" href="#posts">記事を読む →</a>
+</div><div class="hero-grid" aria-hidden="true"></div></section>
+<section id="posts" class="wrap posts">
+  <h2 class="section-title">記事一覧 <span>{{ site.posts | size }}本</span></h2>
+  <div class="cards">
+  {% for post in site.posts %}
+    <a class="card" href="{{ post.url | relative_url }}">
+      <div class="card-top">
+        <span class="tag">{{ post.category | default: post.categories.first | default: "調査" }}</span>
+        {% for t in post.tags %}<span class="tag tag-sub">#{{ t }}</span>{% endfor %}
+      </div>
+      <h3>{{ post.title }}</h3>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%-m月%-d日" }}</time>
+      <p>{{ post.description | default: post.content | strip_html | replace: "まとめ", "" | strip | strip_newlines | truncate: 110 }}</p>
+      <span class="more">続きを読む →</span>
+    </a>
+  {% endfor %}
+  </div>
+</section>
