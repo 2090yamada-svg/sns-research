@@ -5,3 +5,4 @@ theme: minima
 baseurl: /sns-research
 url: https://2090yamada-svg.github.io
 permalink: /:year/:month/:day/:title/
+future: true
