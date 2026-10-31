@@ -4,6 +4,9 @@
 
 ## 記事一覧
 - [Xの年齢層調査](https://2090yamada-svg.github.io/sns-research/2026/11/01/x-age/)（2026-11-01）
+- [Xに似たSNSの比較](https://2090yamada-svg.github.io/sns-research/2026/11/01/x-like-sns/)（2026-11-01）
+- [国ごとのSNS利用状況](https://2090yamada-svg.github.io/sns-research/2026/11/01/sns-by-country/)（2026-11-01）
+- [AI競馬予想バックテスト500レース](https://2090yamada-svg.github.io/sns-research/2026/11/01/keiba-backtest-500/)（2026-11-01）
 
 ## 記事の追加方法
 1. `_posts/` に `YYYY-MM-DD-英数字のタイトル.md` というファイルを作ります。
