@@ -24,7 +24,7 @@ permalink: /embed-demo/
 
 ## リンクカード（linkcard）
 外部サイトの情報は取りに行かず、書いた内容だけで表示します。
-{% include linkcard.html url="https://www.jra.go.jp/" title="JRA日本中央競馬会" description="JRAの公式サイト。レース情報やデータが見られます。" image="/assets/img/posts/keiba-backtest-500.jpg" %}
+{% include linkcard.html url="https://www.jra.go.jp/" title="JRA日本中央競馬会" description="JRAの公式サイト。レース情報やデータが見られます。" image="/assets/img/keiba_stats.png" %}
 {% include linkcard.html url="https://github.com/2090yamada-svg/sns-research" title="このサイトのリポジトリ" description="記事のMarkdownや部品はここにあります。" %}
 
 </div></article>
