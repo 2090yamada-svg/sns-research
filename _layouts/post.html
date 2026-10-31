@@ -2,12 +2,19 @@
 layout: default
 ---
 <article class="post">
-  <header class="post-hero" style="background-image:linear-gradient(90deg,rgba(22,32,58,.95) 0%,rgba(22,32,58,.85) 55%,rgba(22,32,58,.45) 100%),url('{{ '/assets/img/hero.jpg' | relative_url }}')"><div class="wrap narrow">
-    <a class="back" href="{{ '/' | relative_url }}">← 記事一覧</a>
-    <span class="tag">{{ page.category | default: "調査" }}</span>
-    <h1>{{ page.title }}</h1>
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%-m月%-d日" }}</time>
-  </div></header>
-  <div class="wrap narrow prose">{{ content }}</div>
-  <div class="wrap narrow"><a class="btn btn-ghost" href="{{ '/' | relative_url }}">← ほかの記事を見る</a></div>
+  <header class="post-head">
+    <h1 class="vt post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <span class="label">{{ page.tags.first | default: page.category }}</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+      {% if page.description %}<p class="post-desc">{{ page.description }}</p>{% endif %}
+      <p class="post-tags">{% for t in page.tags %}<span>#{{ t }}</span>{% endfor %}</p>
+    </div>
+  </header>
+  <div class="prose">{{ content }}</div>
+  <section class="related">
+    <h2 class="vt sec-title small">ほかの<br>記録</h2>
+    <ul class="cards">{% assign n = 0 %}{% for post in site.posts %}{% unless post.url == page.url %}{% include card.html post=post n=forloop.index0 %}{% endunless %}{% endfor %}</ul>
+    <a class="back" href="{{ '/' | relative_url }}">一覧へもどる</a>
+  </section>
 </article>

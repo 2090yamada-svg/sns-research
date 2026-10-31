@@ -4,21 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title and page.layout != 'home' %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 120 }}">
+<meta name="description" content="{{ page.description | default: site.description | strip_html | strip_newlines | truncate: 120 }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Zen+Old+Mincho:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 </head>
 <body>
-<header class="site-header"><div class="wrap">
-  <a class="brand" href="{{ '/' | relative_url }}"><span class="dot"></span>{{ site.title }}</a>
-  <nav><a href="{{ '/' | relative_url }}#posts">記事一覧</a><a href="https://github.com/2090yamada-svg/sns-research">GitHub</a></nav>
-</div></header>
+<div class="band" aria-hidden="true"></div>
+<header class="top">
+  <a class="mark" href="{{ '/' | relative_url }}">sns<span>·</span>research<small>データの窓</small></a>
+  <button class="menu-btn" id="menuOpen" aria-controls="menu" aria-expanded="false">
+    <svg viewBox="0 0 64 48" aria-hidden="true"><path d="M4 10c0-6 5-8 12-8s11 2 11 8-4 9-12 9S4 16 4 10z" fill="#8c8c8c"/><path d="M31 9c1-6 7-7 14-7s14 1 14 8-6 9-14 9-15-3-14-10z" fill="#9a9a9a"/><path d="M3 34c0-7 6-10 15-10s16 2 16 9-7 12-16 12S3 41 3 34z" fill="#9a9a9a"/><path d="M37 33c0-6 5-9 12-9s12 3 12 9-5 11-12 11-12-4-12-11z" fill="#8c8c8c"/></svg>
+    <span>メニュー</span>
+  </button>
+</header>
+<nav class="menu" id="menu" aria-hidden="true" hidden>
+  <div class="menu-panel">
+    <ul class="menu-v">
+      <li><a href="{{ '/' | relative_url }}">はじめに</a></li>
+      <li><a href="{{ '/' | relative_url }}#records">調査の記録</a></li>
+      <li><a href="{{ '/' | relative_url }}#tags">分野・タグ</a></li>
+      <li><a href="{{ '/' | relative_url }}#about">このサイトについて</a></li>
+    </ul>
+    <ul class="menu-out">
+      <li><a href="https://github.com/2090yamada-svg/sns-research">GitHub ↗</a></li>
+    </ul>
+    <button class="menu-close" id="menuClose" aria-label="メニューを閉じる">{% include stone.html fill="#6f6f6f" %}<span>×</span></button>
+  </div>
+</nav>
 <main>{{ content }}</main>
-<footer class="site-footer"><div class="wrap">
-  <p>{{ site.title }} — {{ site.tagline }}</p>
-  <p class="muted">数字は各出典に基づきます。推測は本文中で明記しています。</p>
-</div></footer>
+<footer class="foot">
+  {% include stone.html cls="s-foot" fill="#c9c9c9" %}
+  <p class="mark">sns<span>·</span>research</p>
+  <p>数字は各出典に基づきます。推測は本文中で明記しています。</p>
+</footer>
+<script src="{{ '/assets/js/site.js' | relative_url }}"></script>
 </body>
 </html>

@@ -1,27 +1,24 @@
 ---
 layout: default
 ---
-<section class="hero" style="background-image:linear-gradient(90deg,rgba(22,32,58,.92) 0%,rgba(22,32,58,.72) 45%,rgba(22,32,58,.15) 100%),url('{{ '/assets/img/hero.jpg' | relative_url }}')"><div class="wrap">
-  <p class="eyebrow">SNS RESEARCH NOTES ・ 調査記録</p>
-  <h1>{{ site.title }}</h1>
-  <p class="tagline">{{ site.tagline }}</p>
-  <p class="lead">{{ site.description }}</p>
-  <a class="btn" href="#posts">記事を読む →</a>
-</div></section>
-<section id="posts" class="wrap posts">
-  <h2 class="section-title">記事一覧 <span>{{ site.posts | size }}本</span></h2>
-  <div class="cards">
-  {% for post in site.posts %}
-    <a class="card" href="{{ post.url | relative_url }}">
-      <div class="card-top">
-        <span class="tag">{{ post.category | default: post.categories.first | default: "調査" }}</span>
-        {% for t in post.tags %}<span class="tag tag-sub">#{{ t }}</span>{% endfor %}
-      </div>
-      <h3>{{ post.title }}</h3>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%-m月%-d日" }}</time>
-      <p>{{ post.description | default: post.content | strip_html | replace: "まとめ", "" | strip | strip_newlines | truncate: 110 }}</p>
-      <span class="more">続きを読む →</span>
-    </a>
-  {% endfor %}
+<section class="hero">
+  <h1 class="vt hero-copy" aria-label="{{ site.tagline }}">{% assign cs = site.tagline | split: "" %}{% for c in cs %}<span style="--i:{{ forloop.index }}">{{ c }}</span>{% if c == "。" and forloop.last == false %}<br>{% endif %}{% endfor %}</h1>
+  {% include stone.html cls="s-hero1" fill="#bdbdbd" %}
+  {% include stone.html cls="s-hero2" fill="#9d9d9d" %}
+</section>
+<section id="records" class="sec">
+  <h2 class="vt sec-title">調査の<br>記録</h2>
+  <ul class="cards">{% for post in site.posts %}{% include card.html post=post n=forloop.index0 %}{% endfor %}</ul>
+</section>
+<section id="tags" class="sec">
+  <h2 class="vt sec-title">分野</h2>
+  <ul class="tags">{% assign ts = site.tags | sort %}{% for t in ts %}<li><a href="#tag-{{ t[0] | slugify: 'unicode' }}">{{ t[0] }} <small>{{ t[1] | size }}</small></a></li>{% endfor %}</ul>
+  {% for t in ts %}<div class="tag-group" id="tag-{{ t[0] | slugify: 'unicode' }}"><h3>{{ t[0] }}</h3><ul>{% for p in t[1] %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}</ul></div>{% endfor %}
+</section>
+<section id="about" class="sec about">
+  <h2 class="vt sec-title">この<br>サイトに<br>ついて</h2>
+  <div class="about-body">
+    <p>X（Twitter）をはじめとするSNSの使われ方や、気になったテーマを、公開データをもとに調べて記録している小さな研究ノートです。</p>
+    <p>確かめた事実と推測は分けて書き、出典を必ず添えています。</p>
   </div>
 </section>

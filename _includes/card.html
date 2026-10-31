@@ -1,0 +1,8 @@
+{% assign p = include.post %}
+<li class="card"><a href="{{ p.url | relative_url }}">
+  <div class="card-img{% unless p.image %} ph ph{{ include.n | modulo: 4 }}{% endunless %}">{% if p.image %}<img src="{{ p.image | relative_url }}" alt="" loading="lazy">{% endif %}</div>
+  <span class="label">{{ p.tags.first | default: p.category }}</span>
+  <h3>{{ p.title }}</h3>
+  <p class="meta">{{ p.date | date: "%Y.%m.%d" }}</p>
+  <span class="arrow" aria-hidden="true"></span>
+</a></li>
