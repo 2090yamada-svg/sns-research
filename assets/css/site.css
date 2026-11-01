@@ -105,3 +105,4 @@ a{color:inherit}img{max-width:100%;display:block}
 .jb-date{font-size:11px;color:var(--sub);letter-spacing:.15em}.jb-item h2{font-weight:400;font-size:18px;margin:4px 0}.jb-desc{font-size:13px;color:#666;margin:0 0 8px;line-height:1.8;text-align:left}.jb-ask{font-family:var(--mincho);font-size:14px;color:#a8432f;margin:0}
 @media(hover:none){.glint{opacity:.55}}
 @media(prefers-reduced-motion:reduce){.gem,.hero-copy span{animation:none!important;opacity:1}.jb-stone,.glint{transition:none}}
+@media(max-width:639px){.s-hero1{width:60px;left:5%;bottom:auto;top:58%}.s-hero3{bottom:auto;top:70%;right:6%;width:54px}}
