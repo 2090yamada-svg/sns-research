@@ -2,7 +2,8 @@
 """読みやすさチェック: python3 scripts/check.py [BASE_URL]  (要 pip install playwright && playwright install chromium)"""
 import sys,re
 from playwright.sync_api import sync_playwright
-B=(sys.argv[1] if len(sys.argv)>1 else "https://2090yamada-svg.github.io/sns-research/").rstrip("/")+"/"
+A=[a for a in sys.argv[1:] if not a.startswith("--")]
+B=(A[0] if A else "https://2090yamada-svg.github.io/sns-research/").rstrip("/")+"/"
 fails=[];rows=[]
 def ok(name,cond,detail=""):
     rows.append((name,"OK" if cond else "NG",detail))
@@ -32,7 +33,7 @@ with sync_playwright() as p:
             for i in range(n):
                 pg.goto(start);pg.wait_for_timeout(300)
                 try:
-                    pg.locator(sel).nth(i).click(timeout=3000);pg.wait_for_load_state();good=pg.url!=start
+                    pg.locator(sel).nth(i).click(timeout=3000);pg.wait_for_url(lambda x:x!=start,timeout=5000);good=True
                 except Exception: good=False
                 ok(f"{w}px クリックで記事へ {start[len(B)-1:]} #{i+1}",good)
         if w<1280:
@@ -47,7 +48,7 @@ with sync_playwright() as p:
                 m.goto(start);n=m.locator(sel).count()
                 for i in range(n):
                     m.goto(start);m.wait_for_timeout(300)
-                    try: m.locator(sel).nth(i).tap(timeout=3000);m.wait_for_load_state();good=m.url!=start
+                    try: m.locator(sel).nth(i).tap(timeout=3000);m.wait_for_url(lambda x:x!=start,timeout=5000);good=True
                     except Exception: good=False
                     ok(f"{w}px タップで記事へ {start[len(B)-1:]} #{i+1}",good)
         ok(f"{w}px JSエラーなし",not errs,"; ".join(errs)[:100])
