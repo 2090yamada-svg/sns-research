@@ -33,3 +33,5 @@ image: /assets/img/posts/スラッグ.jpg
 {% include linkcard.html url="https://example.com/" title="ページのタイトル" description="ひとこと説明" image="/assets/img/posts/スラッグ.jpg" %}
 
 <!-- 注意: よそのサイトの写真は直接載せず、Canva画像やフリー素材、公式の埋め込みを使います。 -->
+
+<!-- 公開前チェック: docs/CHECKLIST.md を確認し、push後に python3 scripts/check.py で NG 0 を確認 -->

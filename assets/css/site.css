@@ -106,3 +106,11 @@ a{color:inherit}img{max-width:100%;display:block}
 @media(hover:none){.glint{opacity:.55}}
 @media(prefers-reduced-motion:reduce){.gem,.hero-copy span{animation:none!important;opacity:1}.jb-stone,.glint{transition:none}}
 @media(max-width:639px){.s-hero1{width:60px;left:5%;bottom:auto;top:58%}.s-hero3{bottom:auto;top:70%;right:6%;width:54px}}
+/* fix: hidden menu overlay must not block clicks; prevent horizontal drift */
+.menu[hidden]{display:none!important}.menu:not(.open){pointer-events:none}
+html,body{overflow-x:hidden;max-width:100%}@supports(overflow:clip){html,body{overflow-x:clip}}
+img,svg,video,iframe,table,pre{max-width:100%}.post-body{overflow-wrap:anywhere}
+.table-wrap{overflow-x:auto;max-width:100%}
+.keypoints{border:1px solid #c9b48a;background:#faf6ee;padding:14px 18px;margin:0 0 24px;border-radius:6px}.keypoints h2{font-size:1rem;margin:0 0 6px}.keypoints ul{margin:0;padding-left:1.2em}
+.chart{margin:24px 0}.chart figcaption{font-size:.85rem;color:#666}.bar{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:.9rem}.bar b{display:block;height:16px;background:#b8423a;border-radius:2px}.bar span:first-child{flex:0 0 7.5em}
+.prose table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}.prose{overflow-wrap:anywhere;min-width:0}

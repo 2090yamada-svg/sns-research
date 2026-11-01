@@ -1,0 +1,10 @@
+name: readability-check
+on: {push: {branches: [main]}, workflow_dispatch: {}}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sleep 120
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - run: python scripts/check.py
