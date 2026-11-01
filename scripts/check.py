@@ -35,6 +35,21 @@ with sync_playwright() as p:
                     pg.locator(sel).nth(i).click(timeout=3000);pg.wait_for_load_state();good=pg.url!=start
                 except Exception: good=False
                 ok(f"{w}px クリックで記事へ {start[len(B)-1:]} #{i+1}",good)
+        if w<1280:
+            m=b.new_context(viewport={"width":w,"height":800},is_mobile=True,has_touch=True).new_page()
+            m.goto(B);m.wait_for_timeout(400)
+            try:
+                m.tap("#menuOpen",timeout=3000);m.wait_for_timeout(500);opened=m.locator("#menu.open").count()>0
+                m.tap("#menuClose",timeout=3000);m.wait_for_timeout(500);closed=m.locator("#menu.open").count()==0
+            except Exception: opened=closed=False
+            ok(f"{w}px タップ: MENUが開く",opened);ok(f"{w}px タップ: MENUが閉じる",closed)
+            for start,sel in ((B,".card a"),(B+"jewelbox/",".jb-item a")):
+                m.goto(start);n=m.locator(sel).count()
+                for i in range(n):
+                    m.goto(start);m.wait_for_timeout(300)
+                    try: m.locator(sel).nth(i).tap(timeout=3000);m.wait_for_load_state();good=m.url!=start
+                    except Exception: good=False
+                    ok(f"{w}px タップで記事へ {start[len(B)-1:]} #{i+1}",good)
         ok(f"{w}px JSエラーなし",not errs,"; ".join(errs)[:100])
     b.close()
 for r in rows:
