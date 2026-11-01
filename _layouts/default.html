@@ -13,7 +13,7 @@
 <body>
 <div class="band" aria-hidden="true"></div>
 <header class="top">
-  <a class="mark" href="{{ '/' | relative_url }}">sns<span>-</span>research<small>データの窓</small></a>
+  <a class="mark" href="{{ '/' | relative_url }}" aria-label="小石と宝石 sns-research トップ"><svg class="logo" viewBox="0 0 92 40" aria-hidden="true"><path d="M5 26c-2-9 4-17 14-19 9-2 18 1 21 9 2 8-4 16-14 18-10 1-19-1-21-8z" fill="#9a9a9a"/><path d="M44 28c-1-7 4-12 11-13 7-1 13 3 13 9s-5 11-12 11-11-2-12-7z" fill="#b4b4b4"/><path d="M71 27c0-5 3-9 9-9s9 3 9 8-4 9-9 9-9-3-9-8z" fill="#7d7d7d"/><circle class="gem" cx="57" cy="25" r="3" fill="#c8432f"/><path d="M12 14c4-3 9-4 13-3" stroke="#fff" stroke-opacity=".45" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span class="mark-t">小石と宝石<small>sns-research ・ データで世界をのぞく。</small></span></a>
   <button class="menu-btn" id="menuOpen" aria-controls="menu" aria-expanded="false">
     <svg viewBox="0 0 64 48" aria-hidden="true"><path d="M4 10c0-6 5-8 12-8s11 2 11 8-4 9-12 9S4 16 4 10z" fill="#8c8c8c"/><path d="M31 9c1-6 7-7 14-7s14 1 14 8-6 9-14 9-15-3-14-10z" fill="#9a9a9a"/><path d="M3 34c0-7 6-10 15-10s16 2 16 9-7 12-16 12S3 41 3 34z" fill="#9a9a9a"/><path d="M37 33c0-6 5-9 12-9s12 3 12 9-5 11-12 11-12-4-12-11z" fill="#8c8c8c"/></svg>
     <span>メニュー</span>
@@ -24,6 +24,7 @@
     <ul class="menu-v">
       <li><a href="{{ '/' | relative_url }}">はじめに</a></li>
       <li><a href="{{ '/' | relative_url }}#records">調査の記録</a></li>
+      <li><a href="{{ '/jewelbox/' | relative_url }}">宝石箱</a></li>
       <li><a href="{{ '/' | relative_url }}#tags">分野・タグ</a></li>
       <li><a href="{{ '/' | relative_url }}#about">このサイトについて</a></li>
     </ul>

@@ -1,0 +1,27 @@
+---
+layout: default
+title: 宝石箱
+permalink: /jewelbox/
+description: 拾い集めた小石（調査記事）のコレクション。その小石は、誰の宝石？
+---
+{% assign paths = "M14 52c-6-16 4-34 22-40 15-5 33-6 50-1 18 6 30 18 27 35-3 16-16 30-36 34-19 4-41 2-52-8-6-6-9-12-11-20z|M10 46c0-20 18-36 44-38 26-1 52 12 56 32 3 20-14 40-42 42-30 2-58-12-58-36z|M18 60c-12-14-6-38 14-48 20-9 50-8 66 6 14 12 12 34-2 46-16 13-44 16-62 8-7-3-12-7-16-12z|M8 50c2-18 22-34 46-36 22-2 46 2 56 18 9 15 0 36-20 44-22 9-54 8-70-6-8-6-13-12-12-20z|M22 66c-16-10-18-34-4-48 14-13 40-16 62-10 20 6 32 22 28 40-4 16-22 26-44 27-16 1-32-2-42-9z" | split: "|" %}
+{% assign fills = "#cfcac3|#c4c8c6|#d3cfc8|#bfc3c6|#cbc6c9|#c7cbc2" | split: "|" %}
+<section class="jb-intro">
+  <div class="seigaiha" aria-hidden="true"></div>
+  <h1 class="jb-title">宝石箱</h1>
+  <p>ここには、世界のデータを小石のように拾い集めた記録が入っています。</p>
+  <p>小石の中には、宝石が隠れているかもしれません。同じ石でも、拾う人によっては、ただの石。別の人にとっては、ずっと探していた宝石。</p>
+  <p class="jb-q">この宝石箱の小石は、誰の宝石なのでしょう。<br>あなたの中で光る小石を、見つけてみてください。</p>
+  <p class="jb-count">いま {{ site.posts | size }} 個の小石があります。記事が増えるたびに、小石も増えていきます。</p>
+</section>
+<ul class="jb">
+{% for post in site.posts %}{% assign i = forloop.index0 %}{% assign pi = i | modulo: paths.size %}{% assign fi = i | modulo: fills.size %}{% assign rot = i | times: 37 | modulo: 24 | minus: 12 %}
+  <li class="jb-item"><a href="{{ post.url | relative_url }}">
+    <svg class="jb-stone" viewBox="0 0 120 90" style="--r:{{ rot }}deg" aria-hidden="true"><path d="{{ paths[pi] }}" fill="{{ fills[fi] }}"/><path d="M32 28c8-6 20-8 30-6" stroke="#fff" stroke-opacity=".5" stroke-width="3" fill="none" stroke-linecap="round"/><g class="glint"><circle cx="{{ i | times: 13 | modulo: 30 | plus: 50 }}" cy="48" r="4.5" fill="#c8432f"/><path d="M{{ i | times: 13 | modulo: 30 | plus: 50 }} 36v6M{{ i | times: 13 | modulo: 30 | plus: 50 }} 54v6M{{ i | times: 13 | modulo: 30 | plus: 38 }} 48h6M{{ i | times: 13 | modulo: 30 | plus: 56 }} 48h6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></g></svg>
+    <span class="jb-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+    <h2>{{ post.title }}</h2>
+    <p class="jb-desc">{{ post.description | strip_html | truncate: 70 }}</p>
+    <p class="jb-ask">{{ post.stone_question | default: "これは誰の宝石？" }}</p>
+  </a></li>
+{% endfor %}
+</ul>

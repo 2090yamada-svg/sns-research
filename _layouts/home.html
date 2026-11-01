@@ -1,10 +1,13 @@
 ---
 layout: default
 ---
-<section class="hero">
-  <h1 class="vt hero-copy" aria-label="{{ site.tagline }}">{% assign cs = site.tagline | split: "" %}{% for c in cs %}<span style="--i:{{ forloop.index }}">{{ c }}</span>{% if c == "。" and forloop.last == false %}<br>{% endif %}{% endfor %}</h1>
+<section class="hero"><div class="seigaiha" aria-hidden="true"></div>
+  <h1 class="vt hero-copy" aria-label="それぞれの中で光る小石を見つけよう">{% assign cs = "それぞれの中で光る小石を見つけよう。" | split: "" %}{% for c in cs %}<span style="--i:{{ forloop.index }}">{{ c }}</span>{% if c == "。" and forloop.last == false %}<br>{% endif %}{% endfor %}</h1>
   {% include stone.html cls="s-hero1" fill="#bdbdbd" %}
   {% include stone.html cls="s-hero2" fill="#9d9d9d" %}
+  {% include stone.html cls="s-hero3" fill="#a9a9a9" gem=true %}
+  <p class="hero-sub">データで世界をのぞく。<br>拾った小石は、ただの石か、誰かの宝石か。</p>
+  <a class="hero-link" href="{{ '/jewelbox/' | relative_url }}">宝石箱をひらく →</a>
 </section>
 <section id="records" class="sec">
   <h2 class="vt sec-title">調査の<br>記録</h2>
